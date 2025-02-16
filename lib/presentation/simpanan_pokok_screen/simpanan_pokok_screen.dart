@@ -299,8 +299,11 @@ class SimpananPokokScreen extends StatelessWidget {
         firstDate: DateTime(1970),
         lastDate: DateTime(
             DateTime.now().year, DateTime.now().month, DateTime.now().day));
-    context.read<SimpananPokokBloc>().add(ChangeDateEvent(date: dateTime));
-    initialState.datetwoController?.text =
-        dateTime.format(pattern: SHORT_DATE);
+    if (!context.mounted) return;
+    if (dateTime != null) {
+      context.read<SimpananPokokBloc>().add(ChangeDateEvent(date: dateTime));
+      initialState.datetwoController?.text =
+          dateTime.format(pattern: SHORT_DATE);
     }
+  }
 }

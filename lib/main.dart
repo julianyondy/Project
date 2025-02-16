@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) {
+        SizeUtils.init(context);
         return BlocProvider(
           create: (context) => ThemeBloc(
             ThemeState(

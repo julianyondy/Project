@@ -15,7 +15,7 @@ class SimpananSukarelaScreen extends StatelessWidget {
         simpananSukarelaModelObj: SimpananSukarelaModel(),
       ))
         ..add(SimpananSukarelaInitialEvent()),
-        child: const SimpananSukarelaScreen(),
+      child: const SimpananSukarelaScreen(),
     );
   }
 
@@ -299,9 +299,11 @@ class SimpananSukarelaScreen extends StatelessWidget {
         firstDate: DateTime(1970),
         lastDate: DateTime(
             DateTime.now().year, DateTime.now().month, DateTime.now().day));
-    context.read<SimpananSukarelaBloc>().add(ChangeDateEvent(date: dateTime));
-    initialState.datetwoController?.text =
-        dateTime.format(pattern: SHORT_DATE);
+    if (!context.mounted) return;
+    if (dateTime != null) {
+      context.read<SimpananSukarelaBloc>().add(ChangeDateEvent(date: dateTime));
+      initialState.datetwoController?.text =
+          dateTime.format(pattern: SHORT_DATE);
     }
+  }
 }
-

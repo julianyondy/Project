@@ -26,7 +26,8 @@ enum DeviceType { mobile, tablet, desktop }
 typedef ResponsiveBuild = Widget Function(
     BuildContext context, Orientation orientation, DeviceType deviceType);
 
-class LocalSizer extends StatelessWidget { // Renamed from Sizer to LocalSizer
+class LocalSizer extends StatelessWidget {
+  // Renamed from Sizer to LocalSizer
   const LocalSizer({super.key, required this.builder});
 
   /// Builds the widget whenever the orientation changes.
@@ -58,13 +59,12 @@ class SizeUtils {
   /// Device's Height
   static late double height;
 
-  class SizeUtils {
+  // Device's Width
   static late double width;
-  
+
   static void init(BuildContext context) {
     width = MediaQuery.of(context).size.width;
   }
-}
 
   static void setScreenSize(
     BoxConstraints constraints,
